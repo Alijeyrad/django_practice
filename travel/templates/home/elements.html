@@ -2,6 +2,24 @@
 {% load static %}
 {% block body %}
 
+<!-- start banner Area -->
+<section class="relative about-banner" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Elements
+				</h1>
+				<p class="text-white link-nav"><a href="{% url 'home:home' %}">Home </a> <span class="lnr lnr-arrow-right"></span>
+					<a href="{% url 'home:elements' %}"> Elements</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+
 <!-- Start Sample Area -->
 <section class="sample-text-area">
 	<div class="container">
