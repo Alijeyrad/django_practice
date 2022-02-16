@@ -33,10 +33,13 @@
 					</div>
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
-							<li><a href="#">Food,</a></li>
-							<li><a href="#">Technology,</a></li>
-							<li><a href="#">Politics,</a></li>
-							<li><a href="#">Lifestyle</a></li>
+							{% for category in post.category.all %}
+							{% if forloop.last %}
+							<li><a href="#">{{category}}</a></li>
+							{% else %}
+							<li><a href="#">{{category}},</a></li>
+							{% endif %}
+							{% endfor %}
 						</ul>
 						<div class="user-details row">
 							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span
@@ -66,6 +69,12 @@
 				</div>
 				<div class="navigation-area">
 					<div class="row">
+						<!--prev navigation-->
+						
+						{% if prev_post == False %}
+						<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center"></div>
+						{% else %}
+						
 						<div
 							class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 							<div class="thumb">
@@ -77,16 +86,24 @@
 							<div class="detials">
 								<p>Prev Post</p>
 								<a href="#">
-									<h4>Space The Final Frontier</h4>
+									<h4>{{prev_post.title}}</h4>
 								</a>
 							</div>
 						</div>
+
+						{% endif %}
+							
+						<!--next navigation-->
+						
+						{% if next_post == False %}
+						<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+						{% else %}
 						<div
 							class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
 							<div class="detials">
 								<p>Next Post</p>
 								<a href="#">
-									<h4>Telescopes 101</h4>
+									<h4>{{next_post.title}}</h4>
 								</a>
 							</div>
 							<div class="arrow">
@@ -96,6 +113,9 @@
 								<a href="#"><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt=""></a>
 							</div>
 						</div>
+						{% endif %}
+							
+
 					</div>
 				</div>
 				<div class="comments-area">
