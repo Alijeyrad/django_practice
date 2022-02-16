@@ -89,8 +89,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 posts-list">
-				
+
 				{% for post in posts %}
+				
 				<div class="single-post row">
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
@@ -100,8 +101,8 @@
 							<li><a href="#">Lifestyle</a></li>
 						</ul>
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a> <span
-									class="lnr lnr-user"></span></p>
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a>
+								<span class="lnr lnr-user"></span></p>
 							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.created_date}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} Views</a> <span
@@ -112,7 +113,7 @@
 					</div>
 					<div class="col-lg-9 col-md-9 ">
 						<div class="feature-img">
-							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
+							<img class="img-fluid" src="{{post.image.url}}" alt=""> <!-- have to add .url at the end-->
 						</div>
 						<a class="posts-title" href="{% url 'blog:blog_single' pid=post.id %}">
 							<h3>{{post.title}}</h3>
@@ -123,9 +124,9 @@
 						<a href="{% url 'blog:blog_single' post.id %}" class="primary-btn">View More</a>
 					</div>
 				</div>
-					
+
 				{% endfor %}
-					
+
 				<nav class="blog-pagination justify-content-center d-flex">
 					<ul class="pagination">
 						<li class="page-item">
