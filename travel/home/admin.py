@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Contact
+from .models import Post, Contact, Category
 # Register your models here.
 
 @admin.register(Post)
@@ -13,4 +13,8 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
     pass
